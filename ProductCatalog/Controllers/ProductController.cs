@@ -19,8 +19,10 @@ namespace Controllers
             _repository = repository;
         }
 
-        [Route("v1/products")]
         [HttpGet]
+        [Route("v1/products")]
+        [ResponseCache(Duration = 60)]
+        //[ResponseCache(Duration = 10, Location = ResponseCacheLocation.Any, NoStore = false)]
         public IEnumerable<ListProductViewModel> Get()
         {
             return _repository.Get();
