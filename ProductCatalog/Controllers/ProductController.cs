@@ -23,6 +23,7 @@ namespace Controllers
         [Route("v1/products")]
         [ResponseCache(Duration = 60)]
         //[ResponseCache(Duration = 10, Location = ResponseCacheLocation.Any, NoStore = false)]
+        //[ResponseCache(Duration = 10, Location = ResponseCacheLocation.Client, NoStore = false)]
         public IEnumerable<ListProductViewModel> Get()
         {
             return _repository.Get();

@@ -14,9 +14,11 @@ namespace ProductCatalog
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddResponseCaching();
+            services.AddResponseCompression();
+
             services.AddScoped<StoreDataContext, StoreDataContext>();
             services.AddTransient<ProductRepository, ProductRepository>();
-            services.AddResponseCaching();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,6 +29,7 @@ namespace ProductCatalog
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseResponseCompression();
             app.UseResponseCaching();
             app.UseMvc();
 
