@@ -48,8 +48,8 @@ namespace Controllers
         [HttpPost]
         public ResultViewModel Post([FromBody] EditorProductViewModel model)
         {
-            model.Validate()
-            if (model.Valid)
+            model.Validate();
+            if (model.Invalid)
                 return new ResultViewModel
                 {
                     Success = false,
@@ -82,7 +82,7 @@ namespace Controllers
         [HttpPut]
         public ResultViewModel Put([FromBody] EditorProductViewModel model)
         {
-            model.Validate()
+            model.Validate();
             if (model.Valid)
                 return new ResultViewModel
                 {
